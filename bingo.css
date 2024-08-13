@@ -1,0 +1,187 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite; /* Cor do fundo do site */
+}
+
+header {
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: gray; /* Cor do fundo do cabeçalho */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    gap: 0px;
+    margin-top: 48px;
+    width: 100%;
+}
+
+nav button {
+    background-color: #f0f0f0; /* Cor do botão */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+    width: 25%;
+}
+nav button:hover{
+    background-color: #aaaaaa; /* Cor do botão quando cursor em cima */ 
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333; /* Cor do rodapé */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    padding: 1%;
+}
+
+article {
+    margin-right: 20px;
+    flex: 70%;
+}
+
+/*==================== Lista de sessão ====================*/
+
+aside {
+    border-radius: 15px;
+    flex: 30%;
+    background-color: #f3f3f3; /* Cor da parte do lado */
+    padding: 1%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.div-lista{
+    position: fixed;
+    background-color: #e3e3e3;
+    padding: 10px;
+    border-radius: 15px;
+    width: 26.5%;
+}
+.lista-bonita {
+    padding: 10px 0;
+    list-style-type: none;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.lista-bonita li {
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 3px; 
+    margin-bottom: 2px; 
+}
+
+.lista-bonita li:last-child {
+    margin-bottom: 0; 
+}
+
+.lista-bonita a {
+    text-decoration: none;
+    color: #007bff; 
+    transition: color 0.3s ease;
+}
+
+.lista-bonita a:hover {
+    color: #0056b3; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.elemento-problema {
+    width: auto !important;
+}
+
+
+/*==================== Responsividade ====================*/
+
+/* Pra mobile */
+@media (max-width: 767px) {
+    main {
+        flex-direction: column;
+    }
+
+    article{
+        margin: 0;
+    }
+    article{
+        flex: 100%;
+    }
+    nav{
+        flex-direction: column;
+    }
+    nav button {
+        width: 100%;
+    }
+    .container {
+        max-width: 90%; 
+    }
+    aside {
+        display: none;
+    }
+}
+
+/* Pra tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    main {
+        flex-direction: row;
+    }
+
+    article {
+        flex: 70%;
+    }
+
+    aside {
+        flex: 30%;
+    }
+}
+
+/* Pra PC */
+@media (min-width: 1024px) {
+    main {
+        flex-direction: row;
+    }
+
+    article {
+        flex: 70%;
+    }
+
+    aside {
+        flex: 30%;
+    }
+}
+
