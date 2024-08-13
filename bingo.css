@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    padding: 15px;
+    height: 48px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -26,8 +26,10 @@ nav {
     background-color: #333;
     display: flex;
     gap: 0px;
-    margin-top: 48px;
+    margin-top: -45px;
     width: 100%;
+    position: fixed;
+    z-index: 1000;
 }
 
 nav button {
@@ -57,6 +59,7 @@ footer {
 }
 
 main {
+    margin-top: 92px;
     display: flex;
     width: 100%;
     padding: 1%;
@@ -71,7 +74,6 @@ article {
 
 aside {
     border-radius: 15px;
-    flex: 30%;
     background-color: #f3f3f3; /* Cor da parte do lado */
     padding: 1%;
     align-items: center;
@@ -84,7 +86,8 @@ aside {
     background-color: #e3e3e3;
     padding: 10px;
     border-radius: 15px;
-    width: 26.5%;
+    width: 90%;
+    top: 88px;
 }
 .lista-bonita {
     padding: 10px 0;
@@ -126,6 +129,46 @@ aside {
     width: auto !important;
 }
 
+/*---------- Animação ----------*/
+
+/* Estilos para o menu dropdown que droppa left */
+#menuDropdown {
+    position: fixed;
+    right: 0;
+    top: 0; /* Distância do topo */
+    transform: translate(100%, 0);
+    width: 0;
+    height: calc(100vh - 48px); /* Altura do baguis */
+    overflow: hidden;
+    transition: transform 0.3s ease; /* Tempo de animação */
+    background-color: #f3f3f3;
+    z-index: 998;
+}
+
+#menuDropdown.open {
+    width: 250px;
+    transform: translate(0, 0);
+}
+
+#menuDropdown.closing {
+    transform: translate(100%, 0);
+    transition: transform 0.3s ease; /* Tempo de animação */
+}
+
+#toggleMenu {
+    background-color: darkgray; /* Cor do botão */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 14px;
+    width: 10%;
+    height: 48px;
+}
+#toggleMenu:hover{
+    background-color: #333;
+    color: white;
+}
 
 /*==================== Responsividade ====================*/
 
@@ -150,7 +193,7 @@ aside {
     .container {
         max-width: 90%; 
     }
-    aside {
+    aside, #toggleMenu {
         display: none;
     }
 }
@@ -184,4 +227,5 @@ aside {
         flex: 30%;
     }
 }
+
 
