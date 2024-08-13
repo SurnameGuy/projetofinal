@@ -10,9 +10,9 @@
 <body>
     <header>
         <div class="logo">Logo</div>
-        
+        <button id="toggleMenu">Menu</button>
     </header>
-    <nav >
+    <nav>
             <button>Sobre</button>
             <button>Contato</button>
             <button>Serviços</button>
@@ -113,7 +113,8 @@
                     Donec imperdiet sagittis velit eu sodales. In iaculis lorem a velit condimentum luctus. Ut consectetur tellus vel diam hendrerit, placerat tempor metus maximus. Morbi ut mi in diam fermentum viverra nec eget orci. Cras vel scelerisque ante. Cras accumsan maximus ipsum, at varius sapien dictum eget. Morbi quis tincidunt purus. Nullam ornare risus sed rhoncus luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
             </section>
         </article>
-        <aside>
+
+        <aside id="menuDropdown">
             <div class="div-lista">
             <h2>Sessões do artigo</h2>
             <ul class="lista-bonita">
@@ -146,11 +147,25 @@ $(document).ready(function() {
             }, 500);
         } else {
             // Calcula a posição do destino e subtrai uma quantidade fixa de pixels pra rolar até a posição certa (porque o cabeçalho é fixo e tal)
-            var targetPosition = $(targetId).offset().top - 50; // Subtrai 50 pixels já que o cabeçalho tem 48 de altura
+            var targetPosition = $(targetId).offset().top - 100; // Subtrai 100 pixels já que o cabeçalho tem 48 de altura e a nav deve ter quase o mesmo
             $('html, body').animate({
                 scrollTop: targetPosition
             }, 500);
         }
     });
+});
+//Faz a animação do menu lateral aparecendo
+document.getElementById('toggleMenu').addEventListener('click', function() {
+    var menu = document.getElementById('menuDropdown');
+    if (menu.classList.contains('open')) {
+        // Inicia a animação depois de fechar
+        menu.classList.add('closing');
+        setTimeout(function() {
+            menu.classList.remove('open'); // Fecha o menu após a animação
+            menu.classList.remove('closing'); // Permite abrir o menu novamente
+        }, 300); // Tempo da animação
+        // Abre o menu
+        menu.classList.add('open');
+    }
 });
 </script>
