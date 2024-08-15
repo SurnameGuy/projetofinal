@@ -10,7 +10,11 @@
 <body>
     <header>
         <div class="logo">Logo</div>
-        <button id="toggleMenu">Menu</button>
+        <div class="menuPesquisa">
+            <button id="toggleMenu">Menu</button>
+            <button id="toggleMenuTablet">Menu</button>
+        </div>
+        
     </header>
     <nav>
             <button>Sobre</button>
@@ -151,13 +155,29 @@ $(document).ready(function() {
         }
     });
 });
-//Faz a animação do menu lateral aparecendo (basicamente, quando passa o cursor por cima, ele verifica se já está aberto, caso não ele adiciona a classe "open")
+//Faz a animação do menu lateral aparecendo (basicamente, quando passa o cursor por cima, ele adiciona a classe "open")
 document.getElementById('toggleMenu').addEventListener('mouseenter', function() {
     var menu = document.getElementById('menuDropdown');
-    if (menu.classList.contains('open')) {
-        menu.classList.remove('open'); // Fecha o menu
-    } else {
-        menu.classList.add('open'); // Abre o menu
+    menu.classList.add('open');
+    document.body.classList.add('menu-open'); // Adiciona a classe ao body para deslocar o conteúdo
+});
+//Quando o mouse sai de cima do menu do lado, ele fecha
+document.getElementById('menuDropdown').addEventListener('mouseleave', function() {
+    var menu = document.getElementById('menuDropdown');
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+});
+
+//Faz a animação do menu lateral aparecendo quando está em um tablet (basicamente, quando clica, ele verifica se já está aberto, caso não ele adiciona a classe "open")
+document.getElementById('toggleMenuTablet').addEventListener('click', function() {
+    var menu = document.getElementById('menuDropdown');
+    if (menu.classList.contains('open')){
+        menu.classList.remove('open');
+        document.body.classList.remove('menu-open'); // Remove a classe ao body para deslocar o conteúdo
+    }else{
+        menu.classList.add('open');
+        document.body.classList.add('menu-open'); // Adiciona a classe ao body para deslocar o conteúdo
     }
+   
 });
 </script>
