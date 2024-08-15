@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +17,6 @@
             <button>Contato</button>
             <button>Serviços</button>
     </nav>
-    
-    
     <main>
         <article>
             <section id="introducao">
@@ -129,7 +127,6 @@
         </aside>
     </main>
 
-
 </body>
 </html>
 <script>
@@ -147,25 +144,20 @@ $(document).ready(function() {
             }, 500);
         } else {
             // Calcula a posição do destino e subtrai uma quantidade fixa de pixels pra rolar até a posição certa (porque o cabeçalho é fixo e tal)
-            var targetPosition = $(targetId).offset().top - 100; // Subtrai 100 pixels já que o cabeçalho tem 48 de altura e a nav deve ter quase o mesmo
+            var targetPosition = $(targetId).offset().top - 92; // Subtrai 92 pixels já que o cabeçalho tem 48 de altura e a nav deve ter quase o mesmo
             $('html, body').animate({
                 scrollTop: targetPosition
             }, 500);
         }
     });
 });
-//Faz a animação do menu lateral aparecendo
-document.getElementById('toggleMenu').addEventListener('click', function() {
+//Faz a animação do menu lateral aparecendo (basicamente, quando passa o cursor por cima, ele verifica se já está aberto, caso não ele adiciona a classe "open")
+document.getElementById('toggleMenu').addEventListener('mouseenter', function() {
     var menu = document.getElementById('menuDropdown');
     if (menu.classList.contains('open')) {
-        // Inicia a animação depois de fechar
-        menu.classList.add('closing');
-        setTimeout(function() {
-            menu.classList.remove('open'); // Fecha o menu após a animação
-            menu.classList.remove('closing'); // Permite abrir o menu novamente
-        }, 300); // Tempo da animação
-        // Abre o menu
-        menu.classList.add('open');
+        menu.classList.remove('open'); // Fecha o menu
+    } else {
+        menu.classList.add('open'); // Abre o menu
     }
 });
 </script>
