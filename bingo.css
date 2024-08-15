@@ -44,6 +44,10 @@ nav button {
 nav button:hover{
     background-color: #aaaaaa; /* Cor do botão quando cursor em cima */ 
 }
+nav button:active{
+    background-color: #666666; /* Cor do botão quando cursor em cima */ 
+    color: white;
+}
 
 footer {
     position: fixed;
@@ -135,24 +139,19 @@ aside {
 #menuDropdown {
     position: fixed;
     right: 0;
-    top: 0; /* Distância do topo */
-    transform: translate(100%, 0);
-    width: 0;
-    height: calc(100vh - 48px); /* Altura do baguis */
+    top: 0;
+    transform: translate(100%, 0); /* Inicialmente escondido */
+    width: 250px; /* Largura do menu */
+    height: calc(100vh - 48px); /* Altura do menu */
     overflow: hidden;
-    transition: transform 0.3s ease; /* Tempo de animação */
-    background-color: #f3f3f3;
-    z-index: 998;
+    transition: transform 0.3s ease; /* Animação suave */
+    background-color: #f3f3f3; /* Cor de fundo do menu */
+    z-index: 998; /* Garante que o menu fique acima de outros elementos */
 }
 
+/* Quando a classe 'open' é adicionada, o menu se torna visível */
 #menuDropdown.open {
-    width: 250px;
-    transform: translate(0, 0);
-}
-
-#menuDropdown.closing {
-    transform: translate(100%, 0);
-    transition: transform 0.3s ease; /* Tempo de animação */
+    transform: translate(0, 0); /* Mostra o menu */
 }
 
 #toggleMenu {
@@ -166,8 +165,11 @@ aside {
     height: 48px;
 }
 #toggleMenu:hover{
-    background-color: #333;
+    background-color: rgb(149, 149, 149);
     color: white;
+}
+#toggleMenu:active{
+    background-color: #333;
 }
 
 /*==================== Responsividade ====================*/
@@ -176,6 +178,7 @@ aside {
 @media (max-width: 767px) {
     main {
         flex-direction: column;
+        margin-top: 10px;
     }
 
     article{
@@ -186,6 +189,8 @@ aside {
     }
     nav{
         flex-direction: column;
+        position: unset;
+        margin-top: 48px;
     }
     nav button {
         width: 100%;
@@ -227,5 +232,3 @@ aside {
         flex: 30%;
     }
 }
-
-
