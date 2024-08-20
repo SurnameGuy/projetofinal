@@ -12,21 +12,21 @@
         <div class="logo">Logo</div>
         <div class="menuPesquisa">
             <form action="/search" method="get">
-                <input type="text" placeholder=" Pesquisar..." name="query" id="searchInput">
+                <input type="text" placeholder="Pesquisar..." name="query" id="searchInput">
                 <button type="submit">🔍</button> <!-- Usando um ícone de lupa como botão de envio -->
             </form>
-            <button id="toggleMenu">☰</button> <!-- Ícone de menu -->
-            <button id="toggleMenuTablet">☰</button>
+            <button id="toggleMenu">Menu</button>
+            <button id="toggleMenuTablet">Menu</button>
         </div>
         
     </header>
     <nav>
+            <a href="blog.html"><button>Início</button></a>
             <a href="sobre.html"><button>Sobre</button></a>
-            <a href="contato.html"><button>Contato</button></a>
             <a href="servicos.html"><button>Serviços</button></a>
     </nav>
     <main>
-        <article>
+        <!--<article>
             <section id="introducao">
                 <h2>Introdução</h2>
                 <p>Conteúdo da introdução... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id rutrum sapien. Aliquam aliquet tincidunt libero, id dignissim augue condimentum mattis. Praesent interdum tincidunt leo, id lobortis felis molestie at. Vestibulum blandit justo neque, in iaculis enim euismod sit amet. Proin mauris nisl, accumsan quis orci sit amet, venenatis commodo tortor. Mauris id urna justo. Aenean faucibus et nunc id tristique.
@@ -118,9 +118,9 @@
                     
                     Donec imperdiet sagittis velit eu sodales. In iaculis lorem a velit condimentum luctus. Ut consectetur tellus vel diam hendrerit, placerat tempor metus maximus. Morbi ut mi in diam fermentum viverra nec eget orci. Cras vel scelerisque ante. Cras accumsan maximus ipsum, at varius sapien dictum eget. Morbi quis tincidunt purus. Nullam ornare risus sed rhoncus luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
             </section>
-        </article>
+        </article>-->
 
-       <aside id="menuDropdown">
+        <!--<aside id="menuDropdown">
             <div class="div-lista">
             <h2>Sessões do artigo</h2>
             <ul class="lista-bonita">
@@ -128,11 +128,10 @@
                 <li><a href="#metodo">Método</a></li>
                 <li><a href="#resultados">Resultados</a></li>
                 <li><a href="#conclusao">Conclusão</a></li>
-                <!-- Item para voltar ao topo -->
                 <li><a href="#" id="voltar-topo">Voltar ao Topo</a></li>
             </ul>   
             </div>
-        </aside>
+        </aside>-->
     </main>
 
 </body>
@@ -152,7 +151,7 @@ $(document).ready(function() {
             }, 500);
         } else {
             // Calcula a posição do destino e subtrai uma quantidade fixa de pixels pra rolar até a posição certa (porque o cabeçalho é fixo e tal)
-            var targetPosition = $(targetId).offset().top - 220; // Subtrai 220 pixels já que tem o cabeçalho e a nav, além do fato de que depois de fechar o conteúdo sobe
+            var targetPosition = $(targetId).offset().top - 92; // Subtrai 92 pixels já que o cabeçalho tem 48 de altura e a nav deve ter quase o mesmo
             $('html, body').animate({
                 scrollTop: targetPosition
             }, 500);

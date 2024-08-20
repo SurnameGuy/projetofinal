@@ -7,10 +7,12 @@
 
 body {
     background-color: antiquewhite; /* Cor do fundo do site */
+    transition: padding-right 0.3s ease; /* Transição suave */
+    text-align: justify;
 }
 
 header {
-    padding: 15px;
+    height: 48px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -22,47 +24,94 @@ header {
     align-items: center;
 }
 
+.logo{
+    padding-left: 15px;
+}
+
 nav {
     background-color: #333;
     display: flex;
     gap: 0px;
-    margin-top: 48px;
+    margin-top: -45px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+
+nav a {
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: inherit; /* Mantém a cor do texto igual aos outros botões */
     width: 100%;
 }
 
-nav button {
+nav a button {
     background-color: #f0f0f0; /* Cor do botão */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     color: black;
     font-size: 16px;
-    width: 25%;
+    width: 100%;
 }
-nav button:hover{
+/*nav button {
+    background-color: #f0f0f0; /* Cor do botão 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+}*/
+nav a button:hover{
     background-color: #aaaaaa; /* Cor do botão quando cursor em cima */ 
 }
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #333; /* Cor do rodapé */
+nav a button:active{
+    background-color: #666666; /* Cor do botão quando cursor em cima */ 
     color: white;
+}
+
+.menuPesquisa {
+    width: 33%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    gap: 20px;
+}
+
+.menuPesquisa form {
+    display: flex;
+    gap: 10px;
+}
+
+.menuPesquisa #searchInput {
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.menuPesquisa form button {
+    background-color: darkgray;
+    border: none;
+    cursor: pointer;
+    border-radius: 90px;
+    width: 27px;
+}
+
+.menuPesquisa form button:hover {
+    background-color: #eee;
 }
 
 main {
+    margin-top: 92px;
     display: flex;
     width: 100%;
     padding: 1%;
 }
 
 article {
+    padding-left: 15px;
     margin-right: 20px;
     flex: 70%;
 }
@@ -71,7 +120,6 @@ article {
 
 aside {
     border-radius: 15px;
-    flex: 30%;
     background-color: #f3f3f3; /* Cor da parte do lado */
     padding: 1%;
     align-items: center;
@@ -84,7 +132,9 @@ aside {
     background-color: #e3e3e3;
     padding: 10px;
     border-radius: 15px;
-    width: 26.5%;
+    width: 90%;
+    top: 88px;
+    text-align: center;
 }
 .lista-bonita {
     padding: 10px 0;
@@ -94,6 +144,7 @@ aside {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .lista-bonita li {
@@ -103,13 +154,17 @@ aside {
     margin-bottom: 2px; 
 }
 
+.lista-bonita li:hover{
+    background-color: #bbb;
+}
+
 .lista-bonita li:last-child {
     margin-bottom: 0; 
 }
 
 .lista-bonita a {
     text-decoration: none;
-    color: #007bff; 
+    color: black; 
     transition: color 0.3s ease;
 }
 
@@ -126,23 +181,91 @@ aside {
     width: auto !important;
 }
 
+/*---------- Animação ----------*/
 
-/*==================== Responsividade ====================*/
+/* Estilos para o menu dropdown que droppa left */
+body.menu-open {
+    padding-right: 250px; /* Largura do menu */
+}
+
+#menuDropdown {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    background-color: #f3f3f3; /* Cor de fundo do menu */
+}
+
+#menuDropdown.open {
+    transform: translateX(0);
+}
+
+/* Quando a classe 'open' é adicionada, o menu se torna visível */
+#menuDropdown.open {
+    transform: translate(0, 0); /* Mostra o menu */
+}
+
+#toggleMenu {
+    background-color: darkgray; /* Cor do botão */
+    border: none;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+    font-size: 14px;
+    width: 100%;
+    height: 48px;
+}
+#toggleMenu:hover{
+    background-color: rgb(149, 149, 149);
+    color: white;
+}
+#toggleMenu:active{
+    background-color: #333;
+}
+#toggleMenuTablet {
+    background-color: darkgray; /* Cor do botão */
+    border: none;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+    font-size: 14px;
+    width: 100%;
+    height: 48px;
+}
+#toggleMenuTablet:hover{
+    background-color: rgb(149, 149, 149);
+    color: white;
+}
+#toggleMenuTablet:active{
+    background-color: #333;
+}
+
+/*==================== Responsividade geral ====================*/
 
 /* Pra mobile */
 @media (max-width: 767px) {
+    header {
+        flex-direction: row;
+        align-items:center;
+    }
+
     main {
         flex-direction: column;
+        margin-top: 10px;
     }
 
     article{
         margin: 0;
-    }
-    article{
         flex: 100%;
+        padding-right: 15px;
     }
     nav{
         flex-direction: column;
+        position: unset;
+        margin-top: 48px;
     }
     nav button {
         width: 100%;
@@ -150,8 +273,20 @@ aside {
     .container {
         max-width: 90%; 
     }
-    aside {
+    aside, #toggleMenu, #toggleMenuTablet{
         display: none;
+    }
+    .menuPesquisa {
+        width: 70%; /* Ocupa toda a largura disponível */
+        flex-direction: column; /* Coloca o formulário e o botão de menu um abaixo do outro */
+        padding-right: 15px;
+    }
+
+    .menuPesquisa form, .menuPesquisa button {
+        width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    }
+    .menuPesquisa form {
+        width: 100%;
     }
 }
 
@@ -168,6 +303,19 @@ aside {
     aside {
         flex: 30%;
     }
+    #toggleMenuTablet {
+        display: unset;
+    }
+    #toggleMenu{
+        display: none;
+    }
+    .menuPesquisa{
+        width: 50%;
+    }
+    .menuPesquisa form {
+        flex: 1; /* Ocupa todo o espaço disponível, mas não diminui o botão toggleMenu */
+        max-width: calc(100% - 100px); /* Subtrai um espaço para o botão toggleMenu */
+    }
 }
 
 /* Pra PC */
@@ -183,5 +331,7 @@ aside {
     aside {
         flex: 30%;
     }
+    #toggleMenuTablet{
+        display: none;
+    }
 }
-
