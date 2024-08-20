@@ -38,7 +38,13 @@ nav {
     z-index: 1000;
 }
 
-nav button {
+nav a {
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: inherit; /* Mantém a cor do texto igual aos outros botões */
+    width: 100%;
+}
+
+nav a button {
     background-color: #f0f0f0; /* Cor do botão */
     border: none;
     padding: 10px 20px;
@@ -47,17 +53,54 @@ nav button {
     font-size: 16px;
     width: 100%;
 }
-nav button:hover{
-    background-color: #aaaaaa; /* Cor do bot��o quando cursor em cima */ 
+/*nav button {
+    background-color: #f0f0f0; /* Cor do botão 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+}*/
+nav a button:hover{
+    background-color: #aaaaaa; /* Cor do botão quando cursor em cima */ 
 }
-nav button:active{
+nav a button:active{
     background-color: #666666; /* Cor do botão quando cursor em cima */ 
     color: white;
 }
 
-.menuPesquisa{
-    width: 10%;
-    padding: 0;
+.menuPesquisa {
+    width: 33%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.menuPesquisa form {
+    display: flex;
+    gap: 10px;
+}
+
+.menuPesquisa #searchInput {
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.menuPesquisa form button {
+    background-color: darkgray;
+    border: none;
+    cursor: pointer;
+    border-radius: 90px;
+    width: 27px;
+}
+
+.menuPesquisa form button:hover {
+    background-color: #eee;
 }
 
 main {
@@ -91,6 +134,7 @@ aside {
     border-radius: 15px;
     width: 90%;
     top: 88px;
+    text-align: center;
 }
 .lista-bonita {
     padding: 10px 0;
@@ -100,6 +144,7 @@ aside {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .lista-bonita li {
@@ -109,13 +154,17 @@ aside {
     margin-bottom: 2px; 
 }
 
+.lista-bonita li:hover{
+    background-color: #bbb;
+}
+
 .lista-bonita li:last-child {
     margin-bottom: 0; 
 }
 
 .lista-bonita a {
     text-decoration: none;
-    color: #007bff; 
+    color: black; 
     transition: color 0.3s ease;
 }
 
@@ -198,6 +247,11 @@ body.menu-open {
 
 /* Pra mobile */
 @media (max-width: 767px) {
+    header {
+        flex-direction: row;
+        align-items:center;
+    }
+
     main {
         flex-direction: column;
         margin-top: 10px;
@@ -205,9 +259,8 @@ body.menu-open {
 
     article{
         margin: 0;
-    }
-    article{
         flex: 100%;
+        padding-right: 15px;
     }
     nav{
         flex-direction: column;
@@ -222,6 +275,18 @@ body.menu-open {
     }
     aside, #toggleMenu, #toggleMenuTablet{
         display: none;
+    }
+    .menuPesquisa {
+        width: 70%; /* Ocupa toda a largura disponível */
+        flex-direction: column; /* Coloca o formulário e o botão de menu um abaixo do outro */
+        padding-right: 15px;
+    }
+
+    .menuPesquisa form, .menuPesquisa button {
+        width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    }
+    .menuPesquisa form {
+        width: 100%;
     }
 }
 
@@ -243,6 +308,13 @@ body.menu-open {
     }
     #toggleMenu{
         display: none;
+    }
+    .menuPesquisa{
+        width: 50%;
+    }
+    .menuPesquisa form {
+        flex: 1; /* Ocupa todo o espaço disponível, mas não diminui o botão toggleMenu */
+        max-width: calc(100% - 100px); /* Subtrai um espaço para o botão toggleMenu */
     }
 }
 
