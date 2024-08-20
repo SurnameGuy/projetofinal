@@ -11,15 +11,19 @@
     <header>
         <div class="logo">Logo</div>
         <div class="menuPesquisa">
-            <button id="toggleMenu">Menu</button>
-            <button id="toggleMenuTablet">Menu</button>
+            <form action="/search" method="get">
+                <input type="text" placeholder=" Pesquisar..." name="query" id="searchInput">
+                <button type="submit">🔍</button> <!-- Usando um ícone de lupa como botão de envio -->
+            </form>
+            <button id="toggleMenu">☰</button> <!-- Ícone de menu -->
+            <button id="toggleMenuTablet">☰</button>
         </div>
         
     </header>
     <nav>
-            <button>Sobre</button>
-            <button>Contato</button>
-            <button>Serviços</button>
+            <a href="sobre.html"><button>Sobre</button></a>
+            <a href="contato.html"><button>Contato</button></a>
+            <a href="servicos.html"><button>Serviços</button></a>
     </nav>
     <main>
         <article>
@@ -116,7 +120,7 @@
             </section>
         </article>
 
-        <aside id="menuDropdown">
+       <aside id="menuDropdown">
             <div class="div-lista">
             <h2>Sessões do artigo</h2>
             <ul class="lista-bonita">
@@ -148,7 +152,7 @@ $(document).ready(function() {
             }, 500);
         } else {
             // Calcula a posição do destino e subtrai uma quantidade fixa de pixels pra rolar até a posição certa (porque o cabeçalho é fixo e tal)
-            var targetPosition = $(targetId).offset().top - 92; // Subtrai 92 pixels já que o cabeçalho tem 48 de altura e a nav deve ter quase o mesmo
+            var targetPosition = $(targetId).offset().top - 220; // Subtrai 220 pixels já que tem o cabeçalho e a nav, além do fato de que depois de fechar o conteúdo sobe
             $('html, body').animate({
                 scrollTop: targetPosition
             }, 500);
